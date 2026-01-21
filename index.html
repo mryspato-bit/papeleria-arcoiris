@@ -715,6 +715,7 @@ header{ ... }
             <option value="Mochilas">Mochilas</option>
             <option value="Impresión">Impresión</option>
             <option value="Papelería">Papelería</option>
+            <option value="Comida">Comida</option>
           </select>
 
           <select id="sort">
@@ -890,6 +891,7 @@ header{ ... }
     "Mochilas":"🎒",
     "Impresión":"🖨️",
     "Papelería":"📌"
+     "Comida": "🫔"
    };
 
     // ====== BASE DE DATOS LOCAL (PRODUCTOS DEMO) (el número y la lista de productos para renderizarlos) ======
@@ -978,6 +980,46 @@ header{ ... }
     { id: 64, name: "Papel para regalo", desc: "Rollo decorativo.", price: 30, cat: "Papelería", img: "img/papel-regalo.jpg", badge:"Promo" },
     { id: 65, name: "Tarjeta de felicitación", desc: "Para toda ocasión.", price: 20, cat: "Papelería", img: "img/tarjeta.jpg", badge:"" },
 
+    // ===== TAMALES =====
+     { 
+    id: 66,name: "Tamal rojo", desc: "Tamal tradicional en salsa roja, suave y bien servido.", price: 25, cat: "Comida", img: "img/tamal-rojo.jpg",badge: "Top"},
+     { 
+     id: 67, 
+     name: "Tamal verde", 
+     desc: "Tamal en salsa verde con un sabor casero y equilibrado.", 
+     price: 25, 
+     cat: "Comida", 
+     img: "img/tamal-verde.jpg", 
+     badge: "" 
+     },
+    { 
+     id: 68, 
+     name: "Tamal dulce", 
+     desc: "Tamal dulce tradicional, esponjoso y ligeramente azucarado.", 
+     price: 25, 
+     cat: "Comida", 
+     img: "img/tamal-dulce.jpg", 
+     badge: "Promo" 
+     },
+     { 
+     id: 69, 
+     name: "Tamal oaxaqueño rojo", 
+     desc: "Tamal oaxaqueño envuelto en hoja de plátano, salsa roja.", 
+     price: 35, 
+     cat: "Comida", 
+     img: "img/tamal-oaxaqueno-rojo.jpg", 
+     badge: "Nuevo" 
+     },
+
+     { 
+     id: 70, 
+     name: "Tamal oaxaqueño verde", 
+     desc: "Tamal oaxaqueño en hoja de plátano con salsa verde tradicional.", 
+     price: 35, 
+     cat: "Comida", 
+     img: "img/tamal-oaxaqueno-verde.jpg", 
+     badge: "Top" 
+     }
     ];
 
      // ====== PAQUETES "PEDIDO RÁPIDO" ======
@@ -1557,6 +1599,7 @@ header{ ... }
 </body>
  
 </html> 
+
 
 
 
