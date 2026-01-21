@@ -1508,42 +1508,28 @@ header{ ... }
       });
     });
   }
-   // ====== INICIALIZACIÓN (AL CARGAR LA PÁGINA) ======
-   byId("year").textContent = new Date().getFullYear();
-
-   // Init
-   loadCart();
-   renderProducts();
-   renderCart();
-
-   // ✅ aquí lo llamas
-   startPromoCountdown();
-
-
-
+   
     // ====== EVENTOS: CLICK EN BOTONES Y CAMBIOS EN FILTROS ======
     byId("openCart").addEventListener("click", openCart);
     byId("closeCart").addEventListener("click", closeCart);
 
-    byId("sendWA").addEventListener("click", ()=>{
-      if(cartCount() === 0 && servicesSelected.length === 0){
-        alert("Tu carrito está vacío.");
-       return;
-      }
-      try {
-       const token = await ejecutarAntiGravity("enviar_pedido");
-       console.log("Token reCAPTCHA:", token);
+    byId("sendWA").addEventListener("click", async ()=>{
+  if(cartCount() === 0 && servicesSelected.length === 0){
+    alert("Tu carrito está vacío.");
+    return;
+  }
 
-       // Aquí sigues igual:
-       const url = whatsappLink(buildOrderMessage());
-       window.open(url, "_blank", "noopener");
+  try {
+    const token = await ejecutarAntiGravity("enviar_pedido");
+    console.log("Token reCAPTCHA:", token);
 
-      } catch (e) {
-       console.error(e);
-        alert("No se pudo ejecutar reCAPTCHA. Revisa que esté bien la Site Key y el dominio.");
-         }
-        });
-
+    const url = whatsappLink(buildOrderMessage());
+    window.open(url, "_blank", "noopener");
+  } catch (e) {
+    console.error(e);
+    alert("No se pudo ejecutar reCAPTCHA. Revisa la Site Key y el dominio.");
+  }
+});
     // ====== BOTONES WHATSAPP GENERALES (ARRIBA Y ABAJO) ======
     const generalMsg = "Holaaa, me interesa la Papelería Arcoíris. ¿Me compartes catálogo y precios, por favor?";
     byId("waTop").href = whatsappLink(generalMsg);
@@ -1566,10 +1552,10 @@ header{ ... }
     renderProducts();
     renderCart();
     startPromoCountdown();
-    openCart();
 
   </script>
 </body>
  
 </html>
+
 
