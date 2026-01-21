@@ -557,24 +557,6 @@ header{ ... }
                       <!-- ====== TERMINAN LOS ESTILOS CSS (DISEÑO DE LA PÁGINA) ====== -->
    <!-- ================================================================================================================= -->
 
-   <script>
-    // Esta función pide a Google un token reCAPTCHA v3
-     function ejecutarAntiGravity(accion) {
-      return new Promise((resolve, reject) => {
-       if (typeof grecaptcha === "undefined") {
-         reject("reCAPTCHA no cargó. Revisa tu Site Key o conexión.");
-         return;
-       }
-
-        grecaptcha.ready(() => {
-        grecaptcha.execute("6Lcu91EsAAAAALVg3XWvFfk-JtvBf7fWlmAGLMh_", { action: accion })
-          .then(token => resolve(token))
-          .catch(err => reject(err));
-      });
-    });
-  }
-</script>
-
     <!-- ================================================================================================================= -->
     <!--                                            JS                                                                     -->
     <!-- ================================================================================================================= -->
@@ -1590,3 +1572,4 @@ header{ ... }
 </body>
  
 </html>
+
