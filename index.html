@@ -1,0 +1,1548 @@
+ <!-- ================================================================================================================= -->
+                          <!-- ====== INICIO DEL DOCUMENTO HTML ====== -->
+ <!-- ================================================================================================================= -->
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- ================================================================================================================= -->
+  <!-- ====== CONFIGURACIÓN BÁSICA DEL SITIO (meta, título, descripción) ====== -->
+   <!-- ================================================================================================================= -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ====== TÍTULO QUE SALE EN LA PESTAÑA DEL NAVEGADOR ====== -->
+  <title>Papelería Arcoíris | Artículos escolares y de oficina</title>
+
+  <!-- ====== DESCRIPCIÓN PARA GOOGLE / SEO ====== -->
+  <meta name="description" content="Papelería con gran variedad de productos: cuadernos, plumas, mochilas, impresiones y más." />
+
+  <!-- ================================================================================================================= -->
+                            <!-- ====== ESTILOS CSS (DISEÑO DE LA PÁGINA) ====== -->
+  <!-- ================================================================================================================= -->
+  
+  <!--====== VARIABLES DE COLORES Y ESTILOS GENERALES (TEMA DEL SITIO) ======
+:root{
+  --bg:#f7f8ff;
+  --card:#ffffff;
+  --text:#1b1f2a;
+  --muted:#5b657a;
+  --brand:#6a5cff;
+  --brand2:#2fd27b;
+  --accent:#ffb703;
+  --pink:#ff5ea8;
+  --border:#e6e8f2;
+  --shadow: 0 12px 30px rgba(23, 28, 45, .08);
+  --radius:18px;
+} -->
+
+<!-- ====== HEADER FIJO: LOGO + MENÚ + BUSCADOR + CARRITO ====== 
+header{ ... }
+.topbar{ ... }
+.brand{ ... }
+.logo{ ... }
+.nav{ ... }
+.pill{ ... }
+.actions{ ... }
+.search{ ... }
+.btn{ ... }
+.cartBadge{ ... } -->
+
+  
+  <style>
+    :root{
+      --bg:#f7f8ff;
+      --card:#ffffff;
+      --text:#1b1f2a;
+      --muted:#5b657a;
+      --brand:#6a5cff;    /* morado suave */
+      --brand2:#2fd27b;   /* verde */
+      --accent:#ffb703;   /* amarillo */
+      --pink:#ff5ea8;     /* rosa */
+      --border:#e6e8f2;
+      --shadow: 0 12px 30px rgba(23, 28, 45, .08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 10% 0%, rgba(106,92,255,.18), transparent 55%),
+        radial-gradient(700px 400px at 90% 10%, rgba(255,94,168,.16), transparent 55%),
+        radial-gradient(900px 600px at 30% 100%, rgba(47,210,123,.12), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:18px}
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(247,248,255,.75);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar{
+      display:flex; align-items:center; gap:14px;
+      justify-content:space-between;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:900;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:40px;height:40px;border-radius:14px;
+      background: conic-gradient(from 220deg, var(--brand), var(--pink), var(--accent), var(--brand2), var(--brand));
+      box-shadow: var(--shadow);
+    }
+    .nav{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    }
+    .pill{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.7);
+      padding:8px 12px;
+      border-radius:999px;
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:700;
+      font-size:14px;
+    }
+    .pill:hover{border-color:#d6daf0}
+    .actions{
+      display:flex; align-items:center; gap:10px;
+    }
+    .search{
+      display:flex; align-items:center; gap:8px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.75);
+      border-radius:999px;
+      padding:10px 12px;
+      min-width: 260px;
+    }
+    .search input{
+      border:0; outline:none; background:transparent;
+      width:100%;
+      font-size:14px;
+    }
+    .btn{
+      border:0; cursor:pointer;
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-weight:900;
+      box-shadow: var(--shadow);
+      transition: transform .06s ease;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+      white-space:nowrap;
+    }
+    .btn:active{transform: translateY(1px)}
+    .btn.primary{background: var(--brand); color:white}
+    .btn.whatsapp{background: #25D366; color:#05210f}
+    .btn.light{background: rgba(255,255,255,.85); border:1px solid var(--border); color:var(--text); box-shadow:none}
+    .cartBadge{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:22px; height:22px; border-radius:999px;
+      background: var(--accent);
+      font-size:12px; font-weight:900;
+      color:#3a2b00;
+    }
+     /* Tarjeta de producto: estructura vertical fija */
+     .product{
+     display: flex;
+     flex-direction: column;
+     }
+
+    /* La descripción ocupa un alto fijo (2 líneas) para que todo alinee */
+    .pdesc{
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2;  /* 2 líneas */
+   overflow: hidden;
+   min-height: calc(1.45em * 2); /* asegura el mismo alto aunque el texto sea corto */
+   }
+
+   /* La fila donde está precio + botón, se va hasta abajo */
+   .product .row{
+   margin-top: auto;       /* empuja la fila al final */
+   align-items: center;
+   }
+     /* ====== RESPONSIVE: AJUSTES PARA CELULAR/TABLET ====== */
+     @media (max-width: 700px){
+     .topbar{
+     flex-wrap: wrap;
+     gap: 10px;
+    }
+
+     .nav{
+     width: 100%;
+     justify-content: center;
+    }
+
+     .actions{
+     width: 100%;
+     gap: 10px;
+    }
+
+     .search{
+     width: 100%;
+     min-width: 0;
+    }
+
+     .btn{
+     padding: 10px 12px;
+     border-radius: 14px;
+    }
+
+     /* Cards un poquito más compactas */
+     .product{
+     padding: 12px;
+    }
+
+     .thumb{
+     height: 130px;   /* un poco más alto en móvil para que se vean mejor */
+    }
+
+     .pname{
+    font-size: 16px;
+    }
+
+     .pdesc{
+     font-size: 13px;
+    }
+   }
+
+    /* ====== HERO: SECCIÓN PRINCIPAL (TÍTULO, DESCRIPCIÓN, PROMOS) ====== */
+    .hero{
+      margin-top:18px;
+      display:grid; gap:16px;
+      grid-template-columns: 1.2fr .8fr;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .search{min-width: 0; width: 100%;}
+      .actions{flex-wrap:wrap; justify-content:flex-end}
+    }
+    .card{
+      background: rgba(255,255,255,.88);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .hero h1{
+      margin:0;
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.1;
+    }
+    .hero p{margin:10px 0 0;color:var(--muted); line-height:1.6; max-width: 65ch}
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .chip{
+      background: rgba(106,92,255,.10);
+      border:1px solid rgba(106,92,255,.18);
+      color:#2f2a66;
+      font-weight:800;
+      padding:8px 10px;
+      border-radius: 999px;
+      font-size:13px;
+    }
+    .promo{
+      display:flex; flex-direction:column; justify-content:space-between; gap:14px;
+      background:
+        radial-gradient(700px 380px at 10% 10%, rgba(255,94,168,.18), transparent 55%),
+        radial-gradient(700px 380px at 90% 10%, rgba(106,92,255,.20), transparent 55%),
+        rgba(255,255,255,.92);
+    }
+    .promoBox{
+      border-radius: 16px;
+      padding:14px;
+      border:1px dashed rgba(106,92,255,.35);
+      background: rgba(106,92,255,.06);
+      color:#2f2a66;
+      font-weight:800;
+      line-height:1.5;
+    }
+    .grid2{
+      display:grid; gap:10px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 500px){ .grid2{grid-template-columns:1fr} }
+
+    /* ====== CATÁLOGO: GRID DE PRODUCTOS + FILTROS ====== */
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
+      margin: 18px 0 10px;
+    }
+    .sectionTitle h2{margin:0}
+    .filters{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    select{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.85);
+      border-radius: 14px;
+      padding:10px 12px;
+      font-weight:700;
+      color:var(--text);
+      outline:none;
+    }
+    .products{
+      display:grid; gap:14px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    /* ====== TARJETA DE PRODUCTO (ordena productos por columnas y estiliza cada tarjeta)====== */
+    .product{
+    grid-column: span 3;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:14px;
+
+    border-radius: 22px;   /* esquinas redondeadas */
+    overflow: hidden;      /* evita bordes puntiagudos */
+   }
+
+    @media (max-width: 1100px){ .product{grid-column: span 4;} }
+    @media (max-width: 800px){ .product{grid-column: span 6;} }
+    @media (max-width: 520px){ .product{grid-column: span 12;} }
+
+   .thumb{
+      height:120px;
+      border-radius: 16px;
+      border:1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(106,92,255,.20), rgba(255,94,168,.12)),
+        #fff;
+      display:flex; align-items:center; justify-content:center;
+      position:relative;
+      overflow:hidden;
+    }
+     /* ===== IMAGEN DEL PRODUCTO ===== */
+      .thumb img{
+       width: 100%;
+       height: 100%;
+       object-fit: contain;
+       background: white;
+
+       border-radius: 14px; /* acompaña el redondeo */
+      }
+
+     /* ===== CONTENEDOR DE IMAGEN DEL PRODUCTO ===== */
+     .thumb{
+       height: 140px;
+       padding: 10px;
+
+       display: flex;
+       align-items: center;
+       justify-content: center;
+
+       border-radius: 18px;   /* redondeo suave */
+       overflow: hidden;     /* recorta bordes duros */
+       }
+
+    .thumb span{
+      font-size:44px;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.08));
+    }
+    .tag{
+   position: absolute;
+   top: 6px;
+   left: 6px;
+
+   background: #ffb703;
+   color: #3a2b00;
+
+   font-weight: 900;
+   font-size: 11px;
+   letter-spacing: .3px;
+   text-transform: uppercase;
+
+   padding: 4px 12px;          /* forma rectangular suave */
+   border-radius: 999px;       /* CAPSULA (no cuadrado) */
+
+   line-height: 1;
+   border: 1px solid rgba(58,43,0,.2);
+   box-shadow: 0 4px 10px rgba(0,0,0,.15);
+   }
+
+   /* ===== OPCIONAL: COLORES POR TIPO ===== */
+  .tag.promo{ background:#ffb703; }
+   .tag.top{ background:#6a5cff; color:white; }
+   .tag.nuevo{ background:#2fd27b; color:#05331b; }
+
+  .thumb{
+   position: relative;
+   padding-top: 16px;
+   }
+   
+   @media (max-width:600px){
+  .tag{
+    font-size: 10px;
+    padding: 3px 10px;
+   }
+  }
+ .tag{
+  top: 4px;
+  }
+    .thumb.noimg{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+   }
+   .thumb.noimg::after{
+   content:"Imagen no encontrada";
+   font-weight: 900;
+   color: var(--muted);
+   font-size: 13px;
+   }
+    .pname{margin:0; font-weight:900}
+    .pdesc{margin:0; color:var(--muted); font-size:14px; line-height:1.45}
+    .row{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .price{
+      font-weight:1000;
+      color:#1a2b55;
+      letter-spacing:.2px;
+    }
+    .mini{
+      font-size:12px; color:var(--muted);
+    }
+
+    /* ====== CARRITO (MODAL): DISEÑO DEL DIALOG Y ELEMENTOS INTERNOS (define cómo se ve el carrito cuando se abre)====== */
+    dialog{
+      border:0;
+      border-radius: 18px;
+      padding:0;
+      width:min(520px, 92vw);
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+    .drawerHeader{
+      padding:16px 16px 10px;
+      border-bottom:1px solid var(--border);
+      background: rgba(255,255,255,.95);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .drawerBody{padding:14px 16px; background: rgba(255,255,255,.95)}
+    .item{
+      display:grid; grid-template-columns: 1fr auto; gap:8px;
+      padding:10px 0; border-bottom:1px dashed #e3e6f3;
+    }
+    .item:last-child{border-bottom:0}
+    .qty{
+      display:inline-flex; gap:6px; align-items:center;
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding:6px 8px;
+      background: rgba(255,255,255,.9);
+    }
+    .qty button{
+      width:28px; height:28px; border-radius: 10px;
+      border:1px solid var(--border);
+      background: white; cursor:pointer;
+      font-weight:900;
+    }
+    .totals{margin-top:10px; padding-top:10px; border-top:1px solid var(--border)}
+    .muted{color:var(--muted)}
+    footer{padding:30px 18px 40px; text-align:center; color:var(--muted)}
+
+    /* ===== Interacción visual ===== */
+   .card{ transition: transform .12s ease, box-shadow .12s ease; }
+   .card:hover{ transform: translateY(-2px); box-shadow: 0 18px 40px rgba(23, 28, 45, .12); }
+
+   .btn{ transition: transform .08s ease, filter .12s ease; }
+   .btn:hover{ filter: brightness(1.03); transform: translateY(-1px); }
+
+   .thumb img{ transition: transform .18s ease; }
+   .product:hover .thumb img{ transform: scale(1.03); }
+
+   /* Animación suave al aparecer productos */
+   @keyframes fadeUp { from{ opacity:0; transform: translateY(8px);} to{opacity:1; transform:none;} }
+   .product{ animation: fadeUp .22s ease both; }
+
+   /* ===== SERVICIOS INTERACTIVOS (TARJETAS CLICABLES) ===== */
+   .serviceCard{
+     grid-column: span 4;
+     box-shadow:none;
+     text-align:left;
+     cursor:pointer;
+     border:1px solid var(--border);
+     background: rgba(255,255,255,.9);
+     border-radius: 18px;
+     padding: 14px;
+     transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+
+   .serviceCard:hover{
+     transform: translateY(-2px);
+     box-shadow: 0 14px 30px rgba(23,28,45,.10);
+     border-color:#d6daf0;
+    }
+
+   @media (max-width: 800px){
+     .serviceCard{ grid-column: span 12; }
+   }
+    @media (max-width: 900px){
+     #contacto > div{
+     grid-template-columns: 1fr !important;
+    }
+   }
+   .contactCard{
+     background: linear-gradient(135deg,
+     rgba(47,210,123,.18),
+     rgba(255,255,255,.95)
+    );
+     border-radius: 22px;
+     box-shadow: 0 16px 36px rgba(23,28,45,.12);
+    }
+
+    /* ===== SECCIÓN SERVICIOS (FONDO DESTACADO) ===== */
+    .servicesSection{
+     background:
+     radial-gradient(700px 350px at 10% 0%, rgba(106,92,255,.16), transparent 55%),
+     radial-gradient(600px 350px at 90% 20%, rgba(255,94,168,.16), transparent 55%),
+     radial-gradient(700px 350px at 30% 100%, rgba(47,210,123,.12), transparent 55%),
+     rgba(248, 163, 163, 0.959);
+
+     border: 1px solid var(--border);
+     border-radius: 22px;
+     box-shadow: 0 18px 40px rgba(23,28,45,.12);
+     }
+     
+     /* ===== PROMOS INTERACTIVAS ===== */
+     .promoAction{
+      width:100%;
+      text-align:left;
+      cursor:pointer;
+      border:1px dashed rgba(106,92,255,.35);
+      background: rgba(106,92,255,.06);
+      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+      }
+     .promoAction:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(23,28,45,.10);
+      filter: brightness(1.02);
+     }
+     .promoAction:active{ transform: translateY(0px); }
+     .promoAction:focus{
+     outline: 3px solid rgba(106,92,255,.25);
+     outline-offset: 2px;
+     }
+
+     /* Respeta accesibilidad */
+     @media (prefers-reduced-motion: reduce){
+     .promoAction{ transition:none; }
+     }
+
+      /*Para que se vea bonito y responsivo */
+     .quickPacks{
+      display:flex;
+      gap:10px;
+     flex-wrap:wrap;
+     }
+     .quickPackBtn{
+      box-shadow:none;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.85);
+      }
+     .quickPackBtn:hover{
+      transform: translateY(-1px);
+      }
+    </style>
+   </head>
+
+   <!-- ================================================================================================================= -->
+                      <!-- ====== TERMINAN LOS ESTILOS CSS (DISEÑO DE LA PÁGINA) ====== -->
+   <!-- ================================================================================================================= -->
+   
+
+
+    <!-- ================================================================================================================= -->
+    <!--                                            JS                                                                     -->
+    <!-- ================================================================================================================= -->
+
+    <!-- ====== HEADER: BARRA SUPERIOR FIJA (LOGO + MENÚ + BUSCADOR + CARRITO) ====== -->
+    <body>
+  <header>
+    <div class="container topbar">
+      <div class="brand" aria-label="Marca">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          Papelería <span style="color:var(--brand)">Arcoíris</span><br/>
+          <span class="mini">Escolar • Oficina • Regalos</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navegación">
+        <a class="pill" href="#catalogo">Catálogo</a>
+        <a class="pill" href="#servicios">Servicios</a>
+        <a class="pill" href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="actions">
+        <div class="search" title="Buscar productos">
+          🔎 <input id="search" type="search" placeholder="Buscar (cuaderno, pluma, mochila...)" />
+        </div>
+        <button class="btn light" id="openCart" type="button" title="Ver carrito">
+          🛒 Carrito <span class="cartBadge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+    <!-- MENSAJE CUANDO LO AGREGAS AL CARRITO  -->
+   <div id="toast" style="
+   position:fixed;
+   left:50%;
+   bottom:18px;
+   transform:translateX(-50%);
+   background: rgba(27,31,42,.92);
+   color:#fff;
+   padding:10px 14px;
+   border-radius:999px;
+   font-weight:800;
+   font-size:14px;
+   box-shadow: 0 18px 40px rgba(0,0,0,.22);
+   opacity:0;
+   pointer-events:none;
+   transition: opacity .18s ease, transform .18s ease;
+   z-index:9999;    
+   "></div>
+
+   <!-- BOTON FLOTANTE DEL CARRITO  -->
+   <button id="fabCart" class="btn primary" type="button" title="Abrir carrito"
+   style="position:fixed; right:16px; bottom:16px; z-index:60; border-radius:999px;">
+   🛒 <span class="cartBadge" id="cartCountFab">0</span>
+   </button>
+
+   <!-- ====== CONTENIDO PRINCIPAL ====== -->
+  <main class="container">
+    <!-- ====== HERO: PRESENTACIÓN PRINCIPAL ====== -->
+    <section class="hero">
+      <div class="card">
+        <h1>Todo para tu escuela y oficina, en un solo lugar ✨</h1>
+        <p>
+          Encuentra cuadernos, plumas, colores, carpetas, mochilas, hojas, accesorios y más.
+          Compra rápido y pregunta por disponibilidad por WhatsApp.
+        </p>
+       <!-- BENEFICIOS  -->
+        <div class="chips" aria-label="Beneficios">
+          <span class="chip">📚 Gran variedad</span>
+          <span class="chip">💳 Pago en tienda</span>
+          <span class="chip">🧾 Facturación</span>
+          <span class="chip">🚚 Entregas locales</span>
+        </div>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn primary" href="#catalogo">Ver catálogo</a>
+          <!-- Cambia el número por el tuyo (formato internacional) -->
+          <a class="btn whatsapp" id="waTop" href="#" rel="noopener">WhatsApp</a>
+        </div>
+        <p class="mini" style="margin-top:10px;">Tip: puedes cambiar el nombre, colores y productos en el código.</p>
+      </div>
+      
+      <!-- CARRITO DE PROMOCIONES -->
+      <div class="card promo" id="promoPanel">
+      <!-- PROMO PRINCIPAL -->
+       <button class="promoBox promoAction" type="button"
+        data-action="filter"
+        data-cat="Cuadernos"
+        data-search="cuaderno"
+        aria-label="Ver cuadernos en promo">
+       🎉 Promo de la semana: <b>3x2</b> en cuadernos seleccionados.
+       <div class="mini" style="margin-top:6px;">
+       ⏳ Termina en: <b id="promoCountdown">--:--:--</b> • Toca para ver cuadernos
+         </div>
+          </button>
+
+         <div class="grid2" style="margin-top:12px;">
+         <!-- IMPRESIONES -->
+         <button class="promoBox promoAction" type="button"
+         style="border-color: rgba(47,210,123,.45); background: rgba(47,210,123,.08);"
+         data-action="service"
+         data-service="impresiones"
+         aria-label="Abrir servicio de impresiones">
+        🖨️ Impresiones y copias<br><span class="mini">Blanco/negro y color</span>
+         <div class="mini" style="margin-top:6px;">Toca para cotizar rápido</div>
+         </button>
+
+          <!-- REGALOS -->
+         <button class="promoBox promoAction" type="button"
+           style="border-color: rgba(255,183,3,.45); background: rgba(255,183,3,.10); color:#3a2b00;"
+           data-action="service"
+           data-service="regalos"
+           aria-label="Abrir servicio de regalos">
+           🎁 Envolturas y detalles<br><span class="mini">Regalos escolares</span>
+           <div class="mini" style="margin-top:6px;">Toca para pedir</div>
+          </button>
+         </div>
+           
+         <!-- PAQUETES DE PAPELERIA -->
+         <div class="promoBox" style="border-color: rgba(106,92,255,.35); background: rgba(106,92,255,.05);">
+          🚀 <b>Pedido rápido</b>
+         <div class="mini" style="margin-top:6px;">Toca un paquete y se agrega al carrito</div>
+
+         <div class="quickPacks" style="margin-top:10px;">
+           <button class="btn light quickPackBtn" type="button" onclick="addQuickPack('primaria')">📒 Lista básica primaria</button>
+           <button class="btn light quickPackBtn" type="button" onclick="addQuickPack('secundaria')">🎒 Lista secundaria</button>
+           <button class="btn light quickPackBtn" type="button" onclick="addQuickPack('oficina')">🖊️ Lista oficina</button>
+           </div>
+         </div>
+
+
+        <!-- WHATSAPP RAPIDO -->
+       <button class="promoBox promoAction" type="button"
+        style="border-color: rgba(255,94,168,.45); background: rgba(255,94,168,.08);"
+        data-action="wa"
+        aria-label="Enviar mensaje por WhatsApp">
+        ⭐ Atención rápida por WhatsApp para cotizaciones y apartados.
+        <div class="mini" style="margin-top:6px;">Toca para escribir “quiero cotización”</div>
+      </button>
+     </div>
+    </section>
+
+    <!-- ====== CATÁLOGO: FILTROS + PRODUCTOS ====== -->
+    <section id="catalogo">
+      <div class="sectionTitle">
+        <h2>Catálogo</h2>
+         <div class="filters">
+          <select id="category">
+            <option value="all">Todas las categorías</option>
+            <option value="Escritura">Escritura</option>
+            <option value="Cuadernos">Cuadernos</option>
+            <option value="Arte">Arte</option>
+            <option value="Organización">Organización</option>
+            <option value="Mochilas">Mochilas</option>
+            <option value="Impresión">Impresión</option>
+            <option value="Papelería">Papelería</option>
+          </select>
+
+          <select id="sort">
+            <option value="popular">Ordenar: Popular</option>
+            <option value="priceAsc">Precio: Menor a mayor</option>
+            <option value="priceDesc">Precio: Mayor a menor</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="products" id="products"></div>
+    </section>
+
+    <!-- ====== SERVICIOS: SECCIÓN DE SERVICIOS DE LA PAPELERÍA ====== -->
+    
+    <section id="servicios" class="card servicesSection" style="margin-top:16px;">
+    <h2 class="servicesTitle">Servicios</h2>
+    <div class="products" style="margin-top:10px;">
+    <!-- ===== SERVICIO 1 ===== -->
+    <button class="card serviceCard" type="button" onclick="openService('impresiones')">
+      <h3 style="margin:0;">🖨️ Impresiones</h3>
+      <p class="pdesc">Copias, escaneo, impresiones B/N y color (según disponibilidad).</p>
+      <span class="mini muted">Toca para elegir detalles</span>
+    </button>
+
+    <!-- ===== SERVICIO 2 ===== -->
+    <button class="card serviceCard" type="button" onclick="openService('facturacion')">
+      <h3 style="margin:0;">🧾 Facturación</h3>
+      <p class="pdesc">Solicítala al momento de tu compra (trae tus datos fiscales).</p>
+      <span class="mini muted">Toca para agregar nota</span>
+    </button>
+
+    <!-- ===== SERVICIO 3 ===== -->
+    <button class="card serviceCard" type="button" onclick="openService('regalos')">
+      <h3 style="margin:0;">🎁 Regalos</h3>
+      <p class="pdesc">Envolturas, moños, tarjetas y detalles para temporada.</p>
+      <span class="mini muted">Toca para pedir</span>
+       </button>
+      </div>
+     </section>
+
+    <!-- ====== CONTACTO: DIRECCIÓN, HORARIO Y BOTÓN DE WHATSAPP ====== -->
+    <section id="contacto" class="card contactCard" style="margin-top:16px;"> 
+      <h2 style="margin-top:0;">Contacto</h2>
+      <p class="muted" style="margin-top:6px;">
+        Dirección: <b>Paseo Cuauhnahuac No. 1932 Plaza Cibeles Jiutepec Plaza Cibeles Jiutepec, 62553 Jiutepec,Morelos</b> • Horario: <b>Lun–Sáb 9:00–19:00</b> • Tel: <b>52-777-348-1853</b>
+      </p>
+      <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn whatsapp" id="waBottom" href="#" rel="noopener">Escríbenos por WhatsApp</a>
+        <a class="btn light" href="#catalogo">Volver al catálogo</a>
+      </div>
+      <p class="mini" style="margin-top:10px;">*Esta página es demo. El carrito es para armar pedido y mandarlo por WhatsApp.</p>
+      <!-- ===== UBICACIÓN DEL LOCAL ===== -->
+      <div style="margin-top:14px; display:grid; grid-template-columns: 1fr 1.2fr; gap:14px; align-items:stretch;">
+
+      <!-- Información y botones -->
+       <div class="card" style="box-shadow:none; background:rgba(255,255,255,.6);">
+        <p class="muted" style="margin:0 0 10px;">
+        📍 <b>Ubicación:</b> Paseo Cuauhnáhuac No. 1932, Plaza Cibeles Jiutepec<br>
+        🕒 <b>Horario:</b> Lun–Sáb 9:00–19:00<br>
+        📞 <b>WhatsApp:</b> 52 777 348 1853
+       </p>
+
+       <div style="display:flex; gap:10px; flex-wrap:wrap;">
+       <!-- WhatsApp -->
+       <a class="btn whatsapp" id="waMap" href="#" rel="noopener">
+        Pedir por WhatsApp
+       </a>
+
+       <!-- Cómo llegar -->
+        <a class="btn light"
+          href="https://www.google.com/maps/dir/?api=1&destination=Paseo+Cuauhnahuac+1932+Plaza+Cibeles+Jiutepec+Morelos"
+          target="_blank" rel="noopener">
+         📍 Cómo llegar
+          </a>
+        </div>
+      </div>
+
+       <!-- Mapa visual -->
+       <div class="card" style="padding:0; overflow:hidden;">
+       <iframe
+        src="https://www.google.com/maps?q=Paseo%20Cuauhnahuac%201932%20Plaza%20Cibeles%20Jiutepec%20Morelos&output=embed"
+        width="100%"
+        height="320"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+         </iframe>
+        </div>
+       </div>
+      </section>
+     </main>
+
+  <!-- ====== FOOTER: PIE DE PÁGINA ====== -->
+  <footer>
+    © <span id="year"></span> Papelería Arcoíris
+  </footer>
+
+  <!-- ====== MODAL DEL CARRITO (DIALOG) ====== -->
+  <dialog id="cartDialog" aria-label="Carrito de compras">
+    <div class="drawerHeader">
+      <div style="font-weight:1000;">🛒 Tu carrito</div>
+      <button class="btn light" id="closeCart" type="button">Cerrar</button>
+    </div>
+    <div class="drawerBody">
+      <div id="cartItems"></div>
+
+      <div class="totals">
+        <div class="row"><span class="muted">Subtotal</span><span class="price" id="subtotal">$0</span></div>
+        <div class="row"><span class="muted">Notas</span><span class="mini">Precios demo</span></div>
+
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn primary" id="sendWA" type="button">Enviar pedido por WhatsApp</button>
+          <button class="btn light" id="clearCart" type="button">Vaciar</button>
+        </div>
+        <p class="mini" style="margin-top:10px;">
+          Al enviar, se abre WhatsApp con tu lista de productos.
+        </p>
+      </div>
+    </div>
+  </dialog>
+     <!-- ===== MODAL DE SERVICIOS (INTERACCIÓN) ===== -->
+       <dialog id="serviceDialog" aria-label="Servicio">
+         <div class="drawerHeader">
+          <div style="font-weight:1000;" id="serviceTitle">Servicio</div>
+         <button class="btn light" id="closeService" type="button">Cerrar</button>
+         </div>
+
+        <div class="drawerBody">
+         <p class="muted" id="serviceDesc" style="margin-top:0;"></p>
+
+       <!-- FORMULARIO DINÁMICO DEL SERVICIO -->
+        <div id="serviceForm"></div>
+
+         <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+         <button class="btn primary" id="addServiceBtn" type="button">
+         Agregar servicio
+           </button>
+            <button class="btn light" id="serviceToWA" type="button">
+         Enviar solo este servicio
+          </button>
+           </div>
+
+          <p class="mini" style="margin-top:10px;">
+        Tip: agrega detalles para que te coticen más rápido.
+            </p>
+          </div>
+       </dialog>
+
+  <!-- =============================================================================================================== -->
+                           <!-- ====== JAVASCRIPT: FUNCIONES E INTERACCIÓN (CATÁLOGO Y CARRITO) ====== -->
+  <script>
+    // DETECTOR DE ERRORES
+    window.onerror = function(msg, src, line, col, err){
+     alert("ERROR JS: " + msg + "\nLínea: " + line + ":" + col);
+    };
+
+    // ====== CONFIGURACIÓN GENERAL (WHATSAPP + LISTA DE PRODUCTOS) ======
+    // Cambia a tu WhatsApp (México ejemplo: 52 + número a 10 dígitos)
+    const WHATSAPP_NUMBER = "527773481853"; // <-- PON AQUÍ TU NÚMERO
+
+    // ====== HELPERS (SIEMPRE AL INICIO) ======
+    const byId = (id) => document.getElementById(id);
+    const money = (n) => "$" + Number(n).toLocaleString("es-MX");
+
+   // ====== EMOJIS POR CATEGORÍAS ======
+    const CAT_ICON = {
+    "Escritura":"🖊️",
+    "Cuadernos":"📒",
+    "Arte":"🎨",
+    "Organización":"🗂️",
+    "Mochilas":"🎒",
+    "Impresión":"🖨️",
+    "Papelería":"📌"
+   };
+
+    // ====== BASE DE DATOS LOCAL (PRODUCTOS DEMO) (el número y la lista de productos para renderizarlos) ======
+    // Productos demo (puedes agregar/quitar)
+    const PRODUCTS = [
+      // MATERIALES GENERALES
+      { id: 1, name: "Cuaderno profesional 100 hojas", desc: "Pasta dura, rayado.", price: 80, cat: "Cuadernos", img: "img/Cuaderno.jpg", badge:"Promo" },
+      { id: 2, name: "Paquete de hojas blancas (500)", desc: "Tamaño carta.", price: 38, cat: "Organización", img: "img/pa_hojas.jpg", badge:"" },
+      { id: 3, name: "Plumas gel (44 pz)", desc: "Tinta suave, colores surtidos.", price: 55, cat: "Escritura", img: "img/plu_gel.jpg", badge:"Top" },
+      { id: 4, name: "Lápices HB (12)", desc: "Ideal para escuela.", price: 50, cat: "Escritura",img: "img/lapiz.jpg" , badge:"" },
+      { id: 5, name: "Colores (24)", desc: "Colores intensos.", price: 450, cat: "Arte", img: "img/colores.jpg", badge:"" },
+      { id: 6, name: "Marcadores (12)", desc: "Punta media, surtidos.", price: 88, cat: "Arte", img: "img/marca.jpg", badge:"" },
+      { id: 7, name: "Carpeta tamaño carta", desc: "Con broche.", price: 105, cat: "Organización", img: "img/carpeta.jpg", badge:"" },
+      { id: 8, name: "Mochila escolar (Impermeable)", desc: "Ligera y resistente.", price: 499, cat: "Mochilas", img: "img/mochi.jpg", badge:"Nuevo" },
+      { id: 9, name: "Impresión B/N (1 hoja)", desc: "Precio por hoja.", price: 2, cat: "Impresión", img: "img/impre.jpg", badge:"" },
+      { id:10, name: "Engrapadora mini", desc: "Compacta para oficina.", price: 79, cat: "Organización", img: "img/engra.jpg", badge:"" },
+      { id:11, name: "Resaltadores (10)", desc: "Colores vibrantes.", price: 72, cat: "Escritura", img: "img/resal.jpg", badge:"" },
+      { id:12, name: "Post-its (3 bloques de raya)", desc: "Notas adhesivas.", price: 48, cat: "Organización", img: "img/postin.jpg", badge:"" },
+      { id: 13, name: "Pegamento en barra", desc: "Ideal para tareas escolares.", price: 25, cat: "Organización", img: "img/pegamento.jpg", badge:"" },
+      { id: 14, name: "Corrector líquido", desc: "Secado rápido.", price: 34, cat: "Escritura", img: "img/corrector.jpg", badge:"Top" },
+      { id: 15, name: "Tijeras escolares", desc: "Punta redonda, seguras.", price: 45, cat: "Organización", img: "img/tijeras.jpg", badge:"" },
+      { id: 16, name: "Regla 30 cm", desc: "Plástico resistente.", price: 23, cat: "Organización", img: "img/regla.jpg", badge:"" },
+      { id: 17, name: "Calculadora básica", desc: "Perfecta para escuela.", price: 220, cat: "Organización", img: "img/calculadora.jpg", badge:"Nuevo" },
+      { id: 18, name: "Cartulina (100 pz)", desc: "Blancas.", price: 251, cat: "Arte", img: "img/cartulina.jpg", badge:"" },
+      // UTILES ESCOLARES COMUNES 
+      { id: 19, name: "Goma blanca", desc: "No mancha el papel.", price: 10, cat: "Escritura", img: "img/borrador.jpg", badge:"" },
+      { id: 20, name: "Sacapuntas metálico", desc: "Filo duradero.", price: 15, cat: "Escritura", img: "img/sacapuntas.jpg", badge:"" },
+      { id: 21, name: "Cuaderno cuadro grande 100 hojas", desc: "Ideal para primaria.", price: 95, cat: "Cuadernos", img: "img/cuaderno-cuadro.jpg", badge:"Promo" },
+      { id: 22, name: "Plumones para pizarrón (4pz)", desc: "Colores surtidos.", price: 132, cat: "Escritura", img: "img/plumon-pizarron.jpg", badge:"" },
+      // ARTE Y CREATIVIDAD
+      { id: 23, name: "Plastilina (12 barras)", desc: "Colores vivos.", price: 85, cat: "Arte", img: "img/plastilina.jpg", badge:"" },
+      { id: 24, name: "Acuarelas escolares", desc: "Incluye pincel.", price: 55, cat: "Arte", img: "img/acuarelas.jpg", badge:"Top" },
+      { id: 25, name: "Papel crepé (24pz)", desc: "Colores variados.", price: 150, cat: "Arte", img: "img/crepe.jpg", badge:"" },
+      { id: 26, name: "Pinceles (set 6)", desc: "Diferentes tamaños.", price: 48, cat: "Arte", img: "img/pinceles.jpg", badge:"" },
+      // ORGANIZACION Y OFICINA 
+      { id: 27, name: "Folder tamaño carta", desc: "Resistente.", price: 12, cat: "Organización", img: "img/folder.jpg", badge:"" },
+      { id: 28, name: "Separadores de colores", desc: "Paquete 10 pzas.", price: 89, cat: "Organización", img: "img/separadores.jpg", badge:"" },
+      { id: 29, name: "Porta documentos", desc: "de plastico y muy resistente.", price: 2449, cat: "Organización", img: "img/portadocumentos.jpg", badge:"Nuevo" },
+      { id: 30, name: "Engrapadora estándar", desc: "Uso escolar y oficina.", price: 178, cat: "Organización", img: "img/engrapadora.jpg", badge:"" },
+      // MOCHILAS Y ACCESORIOS 
+      { id: 31, name: "Lonchera térmica", desc: "Mantiene temperatura de tus comidas preferidas.", price: 379, cat: "Mochilas", img: "img/lonchera.jpg", badge:"" },
+      { id: 32, name: "Lapicera escolar", desc: "Cierre resistente y bien organizado.", price: 249, cat: "Mochilas", img: "img/lapicera.jpg", badge:"" },
+      { id: 33, name: "Mochila infantil", desc: "Diseños surtidos con todo incluido.", price: 380, cat: "Mochilas", img: "img/mochila-infantil.jpg", badge:"Top" },
+      //SERVICIOS 
+      { id: 34, name: "Impresión color", desc: "Precio por hoja.", price: 5, cat: "Impresión", img: "img/impresion-color.jpg", badge:"" },
+      { id: 35, name: "Escaneo de documentos", desc: "Por hoja.", price: 6, cat: "Impresión", img: "img/escaneo.jpg", badge:"" },
+      { id: 36, name: "Enmicado tamaño carta", desc: "Protección de documentos.", price: 25, cat: "Impresión", img: "img/enmicado.jpg", badge:"Nuevo" },
+      { id: 37, name: "Envolturas", desc: "Para esos regalos importantes, colores para todas las ocasiones.", price: 50, cat: "Papelería", img: "img/envolturas.jpg", badge:"" },
+      { id: 38, name: "Kit Organizador", desc: "Lindo y practico para cualquier actividad.", price: 150, cat: "Papelería", img: "img/kit.jpg", badge:"Nuevo" },
+      
+      // ===== ESCOLARES =====
+      { id: 39, name: "Cuaderno espiral 200 hojas", desc: "Raya o cuadro, espiral resistente.", price: 185, cat: "Cuadernos", img: "img/cuaderno-200.jpg", badge:"Top" },
+      { id: 40, name: "Block de dibujo", desc: "Hojas blancas para dibujo escolar.", price: 150, cat: "Arte", img: "img/block-dibujo.jpg", badge:"" },
+      { id: 41, name: "Juego de geometría (4 pzas)", desc: "Regla, escuadras y transportador.", price: 30, cat: "Organización", img: "img/juego-geometria.jpg", badge:"Top" },
+      { id: 42, name: "Compás escolar", desc: "Con punta metálica.", price: 75, cat: "Organización", img: "img/compas.jpg", badge:"Nuevo" },
+      { id: 43, name: "Corrector en cinta", desc: "Secado instantáneo.", price: 60, cat: "Escritura", img: "img/corrector-cinta.jpg", badge:"Top" },
+      { id: 44, name: "Pegamento líquido", desc: "Ideal para trabajos escolares.", price: 50, cat: "Organización", img: "img/pegamento-liquido.jpg", badge:"" },
+      { id: 45, name: "Plumones delgados (12)", desc: "Colores surtidos, punta fina.", price: 115, cat: "Arte", img: "img/plumones-delgados.jpg", badge:"" },
+      { id: 46, name: "Borrador de miga", desc: "No daña el papel.", price: 15, cat: "Escritura", img: "img/borrador-miga.jpg", badge:"" },
+
+     // ===== ARTE Y MANUALIDADES =====
+     { id: 47, name: "Foamy colores (1pz)", desc: "Ideal para manualidades.", price: 15, cat: "Arte", img: "img/foamy.jpg", badge:"Promo" },
+     { id: 48, name: "Foamy diamantado (1pz)", desc: "Colores brillantes.", price: 22, cat: "Arte", img: "img/foamy-diamantado.jpg", badge:"" },
+     { id: 49, name: "Cartulina colores", desc: "Paquete surtido.", price: 120, cat: "Arte", img: "img/cartulina-color.jpg", badge:"Top" },
+     { id: 50, name: "Cartoncillo", desc: "Resistente para trabajos.", price: 16, cat: "Arte", img: "img/cartoncillo.jpg", badge:"" },
+     { id: 51, name: "Pintura acrílica", desc: "Colores básicos.", price: 38, cat: "Arte", img: "img/pintura-acrilica.jpg", badge:"Nuevo" },
+     { id: 52, name: "Silicón frío", desc: "Para manualidades escolares.", price: 80, cat: "Arte", img: "img/silicon-frio.jpg", badge:"Top" },
+     { id: 53, name: "Barras de silicón", desc: "Paquete estándar 1KG.", price: 140, cat: "Arte", img: "img/silicon-barras.jpg", badge:"" },
+
+     // ===== OFICINA =====
+     { id: 54, name: "Clips metálicos", desc: "Paquete chico.", price: 30, cat: "Organización", img: "img/clips.jpg", badge:"" },
+     { id: 55, name: "Broches BACO", desc: "Paquete estándar.", price: 100, cat: "Organización", img: "img/broches-baco.jpg", badge:"Top" },
+     { id: 56, name: "Cinta adhesiva transparente", desc: "Uso escolar y oficina.", price: 30, cat: "Organización", img: "img/cinta.jpg", badge:"" },
+     { id: 57, name: "Perforadora", desc: "Perfora hasta 10 hojas.", price: 145, cat: "Organización", img: "img/perforadora.jpg", badge:"Top" },
+     { id: 58, name: "Porta-lápices", desc: "Metal resistente.", price: 55, cat: "Organización", img: "img/porta-lapices.jpg", badge:"" },
+ 
+     // ESTO FALTA DE IMAGENES
+     // ===== TECNOLOGÍA BÁSICA =====
+     { id: 59, name: "Memoria USB 16GB", desc: "Compatible con PC y laptop.", price: 98, cat: "Organización", img: "img/usb-16gb.jpg", badge:"Top" },
+     { id: 60, name: "Audífonos económicos", desc: "Ideales para clases.", price: 120, cat: "Organización", img: "img/audifonos.jpg", badge:"" },
+     { id: 61, name: "Pilas AA", desc: "Paquete 4 piezas.", price: 80, cat: "Organización", img: "img/pilas-aa.jpg", badge:"" },
+     { id: 62, name: "Calculadora científica", desc: "Para secundaria y bachillerato.", price:434, cat: "Organización", img: "img/calculadora-cientifica.jpg", badge:"Top" },
+
+    // ===== REGALOS =====
+    { id: 63, name: "Bolsa para regalo (1pz)", desc: "Diseños surtidos.", price: 25, cat: "Papelería", img: "img/bolsa-regalo.jpg", badge:"" },
+    { id: 64, name: "Papel para regalo", desc: "Rollo decorativo.", price: 30, cat: "Papelería", img: "img/papel-regalo.jpg", badge:"Promo" },
+    { id: 65, name: "Tarjeta de felicitación", desc: "Para toda ocasión.", price: 20, cat: "Papelería", img: "img/tarjeta.jpg", badge:"" },
+
+    ];
+
+     // ====== PAQUETES "PEDIDO RÁPIDO" ======
+    // Formato: { id: PRODUCT_ID, qty: CANTIDAD }
+    const QUICK_PACKS = {
+     primaria: [
+     { id: 21, qty: 2 }, // Cuaderno cuadro grande 100 hojas
+     { id: 4,  qty: 1 }, // Lápices HB (12)
+     { id: 19, qty: 1 }, // Goma blanca
+     { id: 20, qty: 1 }, // Sacapuntas metálico
+     { id: 16, qty: 1 }, // Regla 30 cm
+     { id: 5,  qty: 1 }, // Colores (24)
+     { id: 13, qty: 1 }, // Pegamento en barra
+     { id: 15, qty: 1 }, // Tijeras escolares
+     ],
+
+     secundaria: [
+     { id: 1,  qty: 2 }, // Cuaderno profesional 100 hojas
+     { id: 3,  qty: 1 }, // Plumas gel (44 pz)
+     { id: 11, qty: 1 }, // Resaltadores (10)
+     { id: 12, qty: 1 }, // Post-its
+     { id: 7,  qty: 1 }, // Carpeta tamaño carta
+     { id: 17, qty: 1 }, // Calculadora básica
+     { id: 32, qty: 1 }, // Lapicera escolar
+     { id: 33, qty: 1 }, // Mochila infantil (puedes cambiar por otra si quieres)
+     ],
+
+     oficina: [
+     { id: 2,  qty: 1 }, // Hojas blancas (500)
+     { id: 30, qty: 1 }, // Engrapadora estándar
+     { id: 27, qty: 10 },// Folder tamaño carta (paquete simulado)
+     { id: 28, qty: 1 }, // Separadores de colores
+     { id: 12, qty: 1 }, // Post-its
+     { id: 14, qty: 1 }, // Corrector líquido
+     { id: 10, qty: 1 }, // Engrapadora mini (opcional, quita si no quieres 2)
+     ],
+    };
+     
+     // ====== FUNCIÓN: AGREGAR PAQUETE AL CARRITO ======
+      window.addQuickPack = function(packKey){
+     const pack = QUICK_PACKS[packKey];
+      if(!pack){ alert("Paquete no encontrado."); return; }
+
+      // Validación: que existan IDs en PRODUCTS
+      const missing = pack.filter(i => !PRODUCTS.some(p => p.id === i.id));
+      if(missing.length){
+       alert("Hay productos en el paquete que no existen en PRODUCTS. Revisa IDs: " + missing.map(x=>x.id).join(", "));
+       return;
+       }
+
+        // Agrega al carrito
+        for(const item of pack){
+        cart[item.id] = (cart[item.id] || 0) + item.qty;
+        }
+
+       saveCart();
+       renderCart();
+
+      // Mensaje bonito
+       const name =
+       packKey === "primaria" ? "📒 Lista básica primaria" :
+       packKey === "secundaria" ? "🎒 Lista secundaria" :
+       "🖊️ Lista oficina";
+
+     showToast(`✅ ${name} agregado`);
+     };
+
+
+    //=================================================================================================================
+    //                                            JS 
+    //=================================================================================================================
+    
+    // ====== ESTADO (MEMORIA) DEL CARRITO (aquí se guarda lo que el usuario agrega)======
+    // cart guarda: { idProducto: cantidad }
+    let cart = {}; // {productId: qty}
+
+    // ====== SERVICIOS SELECCIONADOS ======
+     let servicesSelected = []; // [{key, title, details}]
+
+     const SERVICES = {
+     impresiones: {
+     title: "🖨️ Impresiones",
+     desc: "Elige tipo y cantidad para cotizar.",
+     form: () => `
+      <label class="mini muted">Tipo</label><br>
+      <select id="s_type" style="width:100%; margin:6px 0 10px;">
+        <option value="Blanco y negro">Blanco y negro</option>
+        <option value="Color">Color</option>
+      </select>
+
+      <label class="mini muted">Cantidad de hojas</label><br>
+      <input id="s_qty" type="number" min="1" value="1" style="width:100%; padding:10px 12px; border-radius:14px; border:1px solid var(--border);" />
+
+      <div style="margin-top:10px;">
+        <label class="mini muted">Notas</label><br>
+        <input id="s_note" type="text" placeholder="Ej: tamaño carta, doble cara..." style="width:100%; padding:10px 12px; border-radius:14px; border:1px solid var(--border);" />
+      </div>
+    `,
+    read: () => ({
+      tipo: byId("s_type").value,
+      hojas: byId("s_qty").value,
+      notas: byId("s_note").value.trim()
+    })
+  },
+
+  facturacion: {
+    title: "🧾 Facturación",
+    desc: "Agrega una nota para tu factura (RFC, uso CFDI, etc.).",
+    form: () => `
+      <label class="mini muted">Nota</label><br>
+      <input id="s_note" type="text" placeholder="Ej: RFC, uso CFDI, razón social..." style="width:100%; padding:10px 12px; border-radius:14px; border:1px solid var(--border);" />
+    `,
+    read: () => ({
+      notas: byId("s_note").value.trim()
+    })
+  },
+
+  regalos: {
+    title: "🎁 Regalos",
+    desc: "Elige el tipo de envoltura o detalle.",
+    form: () => `
+      <label class="mini muted">Tipo de detalle</label><br>
+      <select id="s_type" style="width:100%; margin:6px 0 10px;">
+        <option value="Envoltura">Envoltura</option>
+        <option value="Moño">Moño</option>
+        <option value="Tarjeta">Tarjeta</option>
+        <option value="Detalle especial">Detalle especial</option>
+      </select>
+
+      <label class="mini muted">Mensaje (opcional)</label><br>
+      <input id="s_note" type="text" placeholder="Ej: Para: Ana, Feliz cumpleaños..." style="width:100%; padding:10px 12px; border-radius:14px; border:1px solid var(--border);" />
+    `,
+    read: () => ({
+      tipo: byId("s_type").value,
+      mensaje: byId("s_note").value.trim()
+    })
+  }
+};
+
+  let currentServiceKey = null;
+
+   // ====== ABRIR SERVICIO ======
+   window.openService = function(key){
+     currentServiceKey = key;
+     const s = SERVICES[key];
+
+     byId("serviceTitle").textContent = s.title;
+     byId("serviceDesc").textContent = s.desc;
+     byId("serviceForm").innerHTML = s.form();
+
+     byId("serviceDialog").showModal();
+     };
+
+     byId("closeService").addEventListener("click", ()=> byId("serviceDialog").close());
+
+    // ====== AGREGAR SERVICIO A LA LISTA ======
+    byId("addServiceBtn").addEventListener("click", ()=>{
+     if(!currentServiceKey) return;
+
+     const s = SERVICES[currentServiceKey];
+     const details = s.read(); 
+     // Guarda el servicio 
+     servicesSelected.push(
+      { key: currentServiceKey, title: s.title, details
+     });
+     // ✅ Mensaje de SERVICIO AGREGADO" 
+     showToast("✅ Servicio agregado");
+     //Actualiza carrito visual 
+     renderCart(); 
+     // Cierra el modal 
+     byId("serviceDialog").close(); 
+     });
+
+    
+     // ====== ENVIAR SOLO EL SERVICIO POR WHATSAPP ======
+     byId("serviceToWA").addEventListener("click", ()=>{
+     const s = SERVICES[currentServiceKey];
+     const details = s.read();
+
+     let msg = `Holaaaa, me interesa este servicio:\n\n${s.title}\n`;
+     msg += `Detalles: ${JSON.stringify(details, null, 0)}\n\n¿Me cotizas por favor?`;
+
+     window.open(whatsappLink(msg), "_blank", "noopener");
+     });
+ 
+    // ====== MENSAJE CUANDO AGREGAS UN PRODUCTO ======
+    function showToast(msg){
+    const t = byId("toast");
+    t.textContent = msg;
+    t.style.opacity = "1";
+    t.style.transform = "translateX(-50%) translateY(-6px)";
+    clearTimeout(window.__toastTimer);
+    window.__toastTimer = setTimeout(()=>{
+    t.style.opacity = "0";
+    t.style.transform = "translateX(-50%) translateY(0)";
+    }, 1200);
+    }
+
+    // ====== FILTRADO + ORDENAMIENTO DEL CATÁLOGO (decide qué productos se muestran) ======
+    function getFilteredProducts(){
+      // 1) toma búsqueda (search)
+      // 2) toma categoría (category)
+      // 3) toma orden (sort)
+      // 4) filtra y ordena
+      const q = byId("search").value.trim().toLowerCase();
+      const cat = byId("category").value;
+      const sort = byId("sort").value;
+
+      let list = PRODUCTS.filter(p => {
+        const matchesQ = (p.name + " " + p.desc).toLowerCase().includes(q);
+        const matchesCat = cat === "all" ? true : p.cat === cat;
+        return matchesQ && matchesCat;
+      });
+
+      if(sort === "priceAsc") list.sort((a,b)=>a.price-b.price);
+      if(sort === "priceDesc") list.sort((a,b)=>b.price-a.price);
+      // "popular" mantiene orden original
+
+      return list;
+    }
+    
+    function saveCart(){
+     localStorage.setItem("arcoiris_cart", JSON.stringify(cart));
+    }
+
+    function loadCart(){
+    try{
+     const saved = JSON.parse(localStorage.getItem("arcoiris_cart") || "{}");
+     if(saved && typeof saved === "object") cart = saved;
+    }catch(e){ cart = {}; }
+    }
+
+    function clearSavedCart(){
+     localStorage.removeItem("arcoiris_cart");
+    }
+
+    // ====== FUNCIONES DEL CARRITO (AGREGAR, AUMENTAR, DISMINUIR) ======
+    // ====== ACCCIONES DEL CARRITO (expuestas al window) ======
+    window.addToCart = function(id){
+     cart[id] = (cart[id] || 0) + 1;
+     saveCart();
+     showToast("✅ Agregado al carrito");
+     renderCart();
+    };
+
+    window.incQty = function(id){
+     cart[id] = (cart[id] || 0) + 1;
+     saveCart();
+     renderCart();
+    };
+
+    window.decQty = function(id){
+     if(!cart[id]) return;
+     cart[id] -= 1;
+     if(cart[id] <= 0) delete cart[id];
+     saveCart();
+     renderCart();
+    };
+
+   // BOTON VACIAR
+   byId("clearCart").addEventListener("click", ()=>{
+     cart = {};
+     servicesSelected = [];
+     clearSavedCart();
+     renderCart();
+     showToast("🧹 Carrito y servicios vaciados");
+    });
+
+   // BOTON FLOTANTE DEL CARRITO
+   byId("fabCart").addEventListener("click", openCart);
+
+   // ====== RENDER DEL CATÁLOGO (CREA EL HTML DE LAS TARJETAS) (crea el HTML de productos dentro del div #products)======
+    function renderProducts(){
+      // genera tarjetas con imagen, nombre, descripción, precio y botón “Agregar”
+      const wrap = byId("products");
+      const list = getFilteredProducts();
+      wrap.innerHTML = list.map(p => `
+        <article class="card product">
+          <div class="thumb">
+            ${p.badge ? `<span class="tag ${p.badge.toLowerCase()}">${p.badge}</span>` : ""}
+           <img src="${p.img}" alt="${p.name}" loading="lazy">
+          </div>
+          <h3 class="pname">${p.name}</h3>
+          <p class="pdesc">${p.desc}</p>
+          <div class="row">
+            <div>
+              <div class="price">${money(p.price)}</div>
+              <div class="mini">${p.cat}</div>
+            </div>
+            <button class="btn primary" type="button" onclick="addToCart(${p.id})">Agregar</button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function cartCount(){
+      return Object.values(cart).reduce((a,b)=>a+b,0);
+    }
+
+    function cartSubtotal(){
+      return Object.entries(cart).reduce((sum,[id,qty])=>{
+        const p = PRODUCTS.find(x=>x.id===Number(id));
+        return sum + (p ? p.price*qty : 0);
+      },0);
+    }
+    // ===== QUITAR SERVICIO DEL CARRITO =====
+    window.removeService = function(index){
+     servicesSelected.splice(index, 1);
+     showToast("🗑️ Servicio eliminado");
+     renderCart();
+    };
+
+    // ====== RENDER DEL CARRITO (LISTA + BOTONES + SUBTOTAL) (actualiza lo que se ve dentro del modal del carrito)======
+       function renderCart(){
+       // muestra productos agregados, permite + y -, y actualiza subtotal
+       const items = byId("cartItems");
+      const entries = Object.entries(cart);
+
+      // ===== SERVICIOS =====
+      const serviceHTML = servicesSelected.length ? `
+      <div style="margin-bottom:10px;">
+        <div style="font-weight:1000; margin-bottom:6px;">🧾 Servicios</div>
+
+       ${servicesSelected.map((s, idx) => {
+         const extra = Object.entries(s.details || {})
+          .filter(([_,v]) => String(v).trim() !== "")
+          .map(([k,v]) => `${k}: ${v}`)
+          .join(" • ");
+
+        return `
+          <div class="item">
+            <div>
+              <div style="font-weight:900;">${s.title}</div>
+              <div class="mini muted">${extra || "Sin detalles"}</div>
+            </div>
+
+            <button class="btn light" type="button"
+              onclick="removeService(${idx})"
+              style="padding:8px 10px; border-radius:12px;">
+              Quitar
+            </button>
+          </div>
+        `;
+      }).join("")}
+    </div>
+  ` : "";
+
+  // ===== PRODUCTOS =====
+  const productHTML = entries.length ? entries.map(([id,qty])=>{
+    const p = PRODUCTS.find(x=>x.id===Number(id));
+    if(!p) return "";
+    const line = p.price * qty;
+
+    return `
+      <div class="item">
+        <div>
+          <div style="font-weight:900;">${CAT_ICON[p.cat] || "🛍️"} ${p.name}</div>
+          <div class="mini muted">${p.cat} • ${money(p.price)} c/u • <b>${money(line)}</b></div>
+        </div>
+        <div class="qty" aria-label="Cantidad">
+          <button type="button" onclick="decQty(${p.id})">−</button>
+          <b style="min-width:22px; text-align:center; display:inline-block;">${qty}</b>
+          <button type="button" onclick="incQty(${p.id})">+</button>
+        </div>
+      </div>
+    `;
+  }).join("") : `<p class="muted">No hay productos. Puedes agregar del catálogo.</p>`;
+
+  if(!servicesSelected.length && !entries.length){
+    items.innerHTML = `<p class="muted">Tu carrito está vacío. Agrega productos o servicios.</p>`;
+  } else {
+    items.innerHTML = serviceHTML + productHTML;
+  }
+
+  // Contadores y totales
+  byId("subtotal").textContent = money(cartSubtotal());
+  byId("cartCount").textContent = cartCount();
+
+  const fab = byId("cartCountFab");
+  if(fab) fab.textContent = cartCount();
+  }
+
+    // ====== ABRIR / CERRAR EL MODAL DEL CARRITO (abre el <dialog> y lo cierra) ======
+    function openCart(){
+      const d = byId("cartDialog");
+      if(typeof d.showModal === "function") d.showModal();
+      else alert("Tu navegador no soporta dialog. Usa Chrome/Edge actualizado.");
+      renderCart();
+    }
+    function closeCart(){ byId("cartDialog").close(); }
+
+    // ====== WHATSAPP: CREA LINK Y GENERA MENSAJE DEL PEDIDO (arma el mensaje y lo manda a WhatsApp) ======
+    function whatsappLink(message){
+      const text = encodeURIComponent(message);
+      return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+    }
+
+    // Construye el mensaje con lista de productos y subtotal
+    function buildOrderMessage(){
+  const lines = [];
+  lines.push("Holaaaa, quiero hacer este pedido de Papelería Arcoíris:");
+  lines.push("");
+
+  // ===== PRODUCTOS DEL CARRITO =====
+  for(const [id,qty] of Object.entries(cart)){
+    const p = PRODUCTS.find(x=>x.id===Number(id));
+    if(!p) continue;
+    lines.push(`• ${qty} x ${p.name} (${money(p.price)} c/u)`);
+  }
+
+  // ===== SERVICIOS SELECCIONADOS =====
+  if(servicesSelected.length){
+    lines.push("");
+    lines.push("Servicios solicitados:");
+
+    for(const s of servicesSelected){
+      const extra = Object.entries(s.details)
+        .filter(([_,v]) => String(v).trim() !== "")
+        .map(([k,v]) => `${k}: ${v}`)
+        .join(", ");
+
+      lines.push(`• ${s.title}${extra ? " (" + extra + ")" : ""}`);
+    }
+  }
+
+  // ===== SUBTOTAL FINAL =====
+  lines.push("");
+  lines.push(`Subtotal aproximado: ${money(cartSubtotal())}`);
+  lines.push("¿Me confirmas disponibilidad y total, por favor?");
+
+  return lines.join("\n");
+   }
+
+   // ===== PROMO PANEL: clicks inteligentes =====
+   function scrollToCatalog(){
+   const el = document.querySelector("#catalogo");
+   if(el) el.scrollIntoView({ behavior:"smooth", block:"start" });
+   }
+
+   function applyFilter(cat, search){
+   // set valores
+   if(cat){
+    byId("category").value = cat;
+   }
+   if(search){
+    byId("search").value = search;
+   }
+    // re-render + scroll
+   renderProducts();
+   scrollToCatalog();
+   }
+
+   function promoWhatsApp(){
+   const msg = "Holaaa, quiero una cotización rápida / apartado. ¿Me ayudas por favor?";
+   window.open(whatsappLink(msg), "_blank", "noopener");
+   }
+
+   (function initPromoPanel(){
+   const panel = document.querySelector("#promoPanel");
+   if(!panel) return;
+
+   panel.addEventListener("click", (e)=>{
+    const btn = e.target.closest(".promoAction");
+    if(!btn) return;
+
+    const action = btn.dataset.action;
+
+    if(action === "filter"){
+      applyFilter(btn.dataset.cat || "all", btn.dataset.search || "");
+      showToast("📒 Mostrando cuadernos");
+      return;
+    }
+
+    if(action === "service"){
+      const s = btn.dataset.service;
+      if(s) openService(s);
+      return;
+    }
+
+    if(action === "wa"){
+      promoWhatsApp();
+      return;
+    }
+   });
+   })();
+
+   // ===== CONTADOR DE PROMO (ej: termina el domingo 23:59) =====
+   function startPromoCountdown(){
+   const el = byId("promoCountdown");
+   if(!el) return;
+
+   const now = new Date();
+   const end = new Date(now);
+   const day = end.getDay(); // 0 domingo
+   const daysToSunday = (7 - day) % 7;
+   end.setDate(end.getDate() + daysToSunday);
+   end.setHours(23,59,59,999);
+
+   function tick(){
+    const t = end.getTime() - Date.now();
+    if(t <= 0){
+      el.textContent = "00:00:00";
+      return;
+    }
+    const totalSec = Math.floor(t/1000);
+    const h = String(Math.floor(totalSec/3600)).padStart(2,"0");
+    const m = String(Math.floor((totalSec%3600)/60)).padStart(2,"0");
+    const s = String(totalSec%60).padStart(2,"0");
+    el.textContent = `${h}:${m}:${s}`;
+    setTimeout(tick, 1000);
+   }
+    tick();
+    }
+
+   // ====== INICIALIZACIÓN (AL CARGAR LA PÁGINA) ======
+   byId("year").textContent = new Date().getFullYear();
+
+   // Init
+   loadCart();
+   renderProducts();
+   renderCart();
+
+   // ✅ aquí lo llamas
+   startPromoCountdown();
+
+
+
+    // ====== EVENTOS: CLICK EN BOTONES Y CAMBIOS EN FILTROS ======
+    byId("openCart").addEventListener("click", openCart);
+    byId("closeCart").addEventListener("click", closeCart);
+
+    byId("sendWA").addEventListener("click", ()=>{
+      if(cartCount() === 0 && servicesSelected.length === 0){
+        alert("Tu carrito está vacío.");
+       return;
+      }
+      const url = whatsappLink(buildOrderMessage());
+      window.open(url, "_blank", "noopener");
+    });
+
+    // ====== BOTONES WHATSAPP GENERALES (ARRIBA Y ABAJO) ======
+    const generalMsg = "Holaaa, me interesa la Papelería Arcoíris. ¿Me compartes catálogo y precios, por favor?";
+    byId("waTop").href = whatsappLink(generalMsg);
+    byId("waBottom").href = whatsappLink(generalMsg);
+    const waMap = byId("waMap");
+    if(waMap) waMap.href = whatsappLink(generalMsg);
+
+
+    // ====== FILTROS (BUSCAR, CATEGORÍA, ORDEN) ======
+    ["search","category","sort"].forEach(id=>{
+      byId(id).addEventListener("input", renderProducts);
+      byId(id).addEventListener("change", renderProducts);
+    });
+
+    // ====== INICIALIZACIÓN (AL CARGAR LA PÁGINA) ======
+    byId("year").textContent = new Date().getFullYear();
+
+    // Init
+    loadCart();
+    renderProducts();
+    renderCart();
+    startPromoCountdown();
+    openCart();
+
+  </script>
+</body>
+</html>
