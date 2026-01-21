@@ -550,20 +550,37 @@ header{ ... }
       transform: translateY(-1px);
       }
     </style>
+     <script src="https://www.google.com/recaptcha/api.js?render=6Lcu91EsAAAAALVg3XWvFfk-JtvBf7fWlmAGLMh_"></script>
    </head>
 
    <!-- ================================================================================================================= -->
                       <!-- ====== TERMINAN LOS ESTILOS CSS (DISEÑO DE LA PÁGINA) ====== -->
    <!-- ================================================================================================================= -->
-   
 
+   <script>
+    // Esta función pide a Google un token reCAPTCHA v3
+     function ejecutarAntiGravity(accion) {
+      return new Promise((resolve, reject) => {
+       if (typeof grecaptcha === "undefined") {
+         reject("reCAPTCHA no cargó. Revisa tu Site Key o conexión.");
+         return;
+       }
+
+        grecaptcha.ready(() => {
+        grecaptcha.execute("6Lcu91EsAAAAALVg3XWvFfk-JtvBf7fWlmAGLMh_", { action: accion })
+          .then(token => resolve(token))
+          .catch(err => reject(err));
+      });
+    });
+  }
+</script>
 
     <!-- ================================================================================================================= -->
     <!--                                            JS                                                                     -->
     <!-- ================================================================================================================= -->
 
     <!-- ====== HEADER: BARRA SUPERIOR FIJA (LOGO + MENÚ + BUSCADOR + CARRITO) ====== -->
-    <body>
+ <body>
   <header>
     <div class="container topbar">
       <div class="brand" aria-label="Marca">
@@ -1493,6 +1510,22 @@ header{ ... }
     tick();
     }
 
+   
+    // Esta función pide a Google un token reCAPTCHA v3
+     function ejecutarAntiGravity(accion) {
+      return new Promise((resolve, reject) => {
+       if (typeof grecaptcha === "undefined") {
+         reject("reCAPTCHA no cargó. Revisa tu Site Key o conexión.");
+         return;
+       }
+
+        grecaptcha.ready(() => {
+        grecaptcha.execute("6Lcu91EsAAAAALVg3XWvFfk-JtvBf7fWlmAGLMh_", { action: accion })
+          .then(token => resolve(token))
+          .catch(err => reject(err));
+      });
+    });
+  }
    // ====== INICIALIZACIÓN (AL CARGAR LA PÁGINA) ======
    byId("year").textContent = new Date().getFullYear();
 
@@ -1515,9 +1548,19 @@ header{ ... }
         alert("Tu carrito está vacío.");
        return;
       }
-      const url = whatsappLink(buildOrderMessage());
-      window.open(url, "_blank", "noopener");
-    });
+      try {
+       const token = await ejecutarAntiGravity("enviar_pedido");
+       console.log("Token reCAPTCHA:", token);
+
+       // Aquí sigues igual:
+       const url = whatsappLink(buildOrderMessage());
+       window.open(url, "_blank", "noopener");
+
+      } catch (e) {
+       console.error(e);
+        alert("No se pudo ejecutar reCAPTCHA. Revisa que esté bien la Site Key y el dominio.");
+         }
+        });
 
     // ====== BOTONES WHATSAPP GENERALES (ARRIBA Y ABAJO) ======
     const generalMsg = "Holaaa, me interesa la Papelería Arcoíris. ¿Me compartes catálogo y precios, por favor?";
@@ -1545,4 +1588,5 @@ header{ ... }
 
   </script>
 </body>
+ 
 </html>
